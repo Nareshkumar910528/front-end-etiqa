@@ -1,0 +1,76 @@
+<div class="c19-stats">
+
+    <div class="header">
+        <img [src]="c19Image" class="c19Image">
+        <span class="side-gap">OVERVIEW OF COVID-19 STATISTICS</span>
+        <img [src]="c19Image" class="c19Image">
+    </div>
+
+    <div class="all-data-info">
+        <div class="title">
+            <span>Covid-19 World Statistics Data as of {{currentDate | date: 'dd MMMM yyyy'}}, {{currentDate | date: 'hh:mm:ss a' | uppercase}}</span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <span>Active Cases</span><br>
+                <span class="bold-font">{{activeCases}}</span>
+            </div>
+            <div class="col-md-3">
+                <span>Number of Affected Countries</span><br>
+                <span class="bold-font">{{affectedCountries}}</span>
+            </div>
+            <div class="col-md-3">
+                <span>Total Cases</span><br>
+                <span class="bold-font">{{totalCases}}</span>
+            </div>
+            <div class="col-md-3">
+                <span>Critical Cases</span><br>
+                <span class="bold-font">{{totalCriticalCases}}</span>
+            </div>
+        </div>
+
+        <div class="row margin-top15">
+            <div class="col-md-3">
+                <span>Total Death</span><br>
+                <span class="bold-font">{{totalDeath}}</span>
+            </div>
+            <div class="col-md-3">
+                <span>World Population</span><br>
+                <span class="bold-font">{{totalWorldPopulation}}</span>
+            </div>
+            <div class="col-md-3">
+                <span>Total Recovered</span><br>
+                <span class="bold-font">{{totalRecovered}}</span>
+            </div>
+            <div class="col-md-3">
+                <span>Total Test Taken</span><br>
+                <span class="bold-font">{{totalCompletedTest}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="second-column">
+        <div class="row select-button">
+            <div class="col-md-6">
+                <select class="form-select selection" aria-label="Default select example" (change)="onChangeCountryName($event)">
+                    <option selected hidden>Select a Country to view Details</option>
+                    <option *ngFor="let names of countryName">{{names}}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <button class="btn" (click)="viewStats()" [disabled]="!validation()">Click to view C19 statistics for the selected country</button>
+            </div>
+        </div>
+
+        <div>
+            <app-c19-country-stats [country-stats]="statisticsByCountry" [country-flag]="countryFlag"></app-c19-country-stats>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>Stay home and stay safe. Thank you.</span><br>
+        <span>By: Nareshkumar Sundransegrin</span>
+    </div>
+
+</div>
